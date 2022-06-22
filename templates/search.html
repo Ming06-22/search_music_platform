@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>MusicBase - intro</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="{{url_for('static', filename='assets/css/main.css')}}" />
+	<noscript><link rel="stylesheet" href="{{url_for('static', filename='assets/css/noscript.css')}}" /></noscript>
+</head>
+<body class="is-preload">
+	<!-- Wrapper -->
+	<div id="wrapper">
+		<!-- Header -->
+		<header id="header">
+			<a href="/" class="logo"><strong>Music</strong> <span>All for you</span></a>
+			<nav>
+				<a href="#menu">Menu</a>
+			</nav>
+		</header>
+		<!-- Menu -->
+		<nav id="menu">
+			<ul class="links">
+				<li><a href="/">Login</a></li>
+				<li><a href="">Profile</a></li>
+				<li><a href="">Calender</a></li>
+				<li><a href="">Favorite</a></li>
+			</ul>
+			<ul class="actions stacked">
+				<li><a href="#" class="button primary fit">Get Started</a></li>
+			</ul>
+		</nav>
+	</div>
+	<!-- Result -->
+	<div class="row gtr-200">
+		<div class="col-6 col-12-medium">
+			<!-- Table -->
+			{% if key %}
+				<h2> &nbsp;{{key}}</h2>
+			{% else %}
+				<h2> &nbsp;ALL</h2>
+			{% endif %}
+			<div class="table-wrapper">
+				<table>
+					<thead>
+						<tr>
+							<th>Group</th>
+							<th>Place</th>
+							<th>Time</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% if key %}
+							{% for i in range(length) %}
+							<tr>
+								<td><a href="/index?title={{information[0][i]}}&locationName={{information[1][i]}}&id={{information[3][i]}}&time={{information[2][i]}}">{{information[0][i]}}</a></td>
+								<td><a href="/index?title={{information[0][i]}}&locationName={{information[1][i]}}&id={{information[3][i]}}&time={{information[2][i]}}">{{information[1][i]}}</a></td>
+								<td><a href="/index?title={{information[0][i]}}&locationName={{information[1][i]}}&id={{information[3][i]}}&time={{information[2][i]}}">{{information[2][i]}}</a></td>
+							</tr>
+							{% endfor %}
+						{% else %}
+							{% for data in music %}
+							<tr>
+								<td><a href="/index?title={{data.title}}&locationName={{data.locationName}}&id={{data.id}}&time={{data.time}}">{{data.title}}</a></td>
+								<td><a href="/index?title={{data.title}}&locationName={{data.locationName}}&id={{data.id}}&time={{data.time}}">{{data.locationName}}</a></td>
+								<td><a href="/index?title={{data.title}}&locationName={{data.locationName}}&id={{data.id}}&time={{data.time}}">{{data.time}}</a></td>
+							</tr>
+							{% endfor %}
+						{% endif %}
+					</tbody>
+				</table>
+			</div>
+			<h4>Pagination</h4>
+			<ul class="pagination">
+				<li><span class="button small disabled">Prev</span></li>
+				<li><a href="#" class="page active">1</a></li>
+				<li><a href="#" class="page">2</a></li>
+				<li><a href="#" class="page">3</a></li>
+				<li><span>&hellip;</span></li>
+				<li><a href="#" class="page">8</a></li>
+				<li><a href="#" class="page">9</a></li>
+				<li><a href="#" class="page">10</a></li>
+				<li><a href="#" class="button small">Next</a></li>
+			</ul>
+		</div>
+		<div class="col-6 col-12-medium">
+			<!-- Image -->
+			<h1>Poster</h1>
+			<span class="image fit"><img src="{{url_for('static', filename='images/pic03.jpg')}}" height="710" alt="poster" /></span>
+			<!-- Scripts -->
+			<script src="{{url_for('static', filename='assets/js/jquery.min.js')}}"></script>
+			<script src="{{url_for('static', filename='assets/js/jquery.scrolly.min.js')}}"></script>
+			<script src="{{url_for('static', filename='assets/js/jquery.scrollex.min.js')}}"></script>
+			<script src="{{url_for('static', filename='assets/js/browser.min.js')}}"></script>
+			<script src="{{url_for('static', filename='assets/js/breakpoints.min.js')}}"></script>
+			<script src="{{url_for('static', filename='assets/js/util.js')}}"></script>
+			<script src="{{url_for('static', filename='assets/js/main.js')}}"></script>
+		</div>
+	</div>
+</body>					
+</html>

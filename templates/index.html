@@ -1,0 +1,204 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Musicbase</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="{{url_for('static', filename='assets/css/main.css')}}" />
+	<noscript><link rel="stylesheet" href="{{url_for('static', filename='assets/css/noscript.css')}}" /></noscript>
+</head>
+<body class="is-preload">
+	<!-- Wrapper -->
+	<div id="wrapper">
+		<!-- Header -->
+		<header id="header" class="alt">
+			<a href="/" class="logo"><strong>Music</strong> <span>all for you</span></a>
+			<nav>
+				<a href="#menu">Menu</a>
+			</nav>
+		</header>
+		<!-- Menu -->
+		<nav id="menu">
+			<ul class="links">
+				<li><a href="/">Login</a></li>
+				<li><a href="">Profile</a></li>
+				<li><a href="">Calender</a></li>
+				<li><a href="">Favorite</a></li>
+			</ul>
+			<ul class="actions stacked">
+				<li><a href="#" class="button primary fit">Get Started</a></li>
+			</ul>
+		</nav>
+		<!-- Main -->
+		<div id="main">
+			<!-- One -->
+			<section id="one" class="tiles">
+				<article>
+					<span class="image">
+						<img src="{{url_for('static', filename='images/picture.jpg')}}" alt="" />
+						<img src="{{url_for('static', filename='images/pic01.jpg')}}" alt="" />
+					</span>
+					<header class="major">
+						<h3>Picture</h3>
+						<p>Live in the light of photography, story</p>
+					</header>
+				</article>
+				<article>
+					<header class="major">
+						<h1>{{info["title"]}}</h1>
+						<h4>{{info["locationName"]}} &nbsp;({{location}})</h4>
+						<h4>{{info["time"]}}</h4>
+					</header>
+				</article>
+				<article>
+					<header class="major">
+						<h3>INTRO</h3>
+						<!--<p>location: {{location}}<br>-->
+						<p>price: {{price}}<br>on sale: {{onSales}}</p>
+					</header>
+				</article>
+				<article>
+					<span class="image">
+						<img src="{{url_for('static', filename='images/maplogo.jpg')}}" alt="" />
+						<img src="{{url_for('static', filename='images/pic04.jpg')}}" alt="" />
+					</span>
+					<header class="major">
+						<h3><a href="https://www.google.com.tw/maps" class="link">MAP</a></h3>
+						<p>Footprint Map</p>
+					</header>
+				</article>
+			</section>
+			<!-- Two -->
+			<section id="two">
+				<div class="inner">
+					<header class="major">
+						<h2>Confirmed Case</h2>
+					</header>
+					<p>該縣市確診足跡人數: {{covid_num}}</p>
+				</div>
+			</section>
+		</div>
+		<!-- Two -->
+		<section id="three">
+			<div class="inner">
+				<header class="major">
+					<h2>Message Board</h2>
+				</header>
+				<form method="post" action="/message?title={{info['title']}}&locationName={{info['locationName']}}&id={{id}}&time={{info['time']}}">
+					<div class="row gtr-500">
+						<div class="col-20 col-6-medium">
+							<!-- Table -->
+							<div class="table-wrapper" style="background: rgba(212, 212, 255, 0.035); overflow:auto; width:auto; height: 300px;">
+								<table>
+									<thead>
+										<tr>
+											<th>Name</th>
+											<th>Message</th>
+											<th>Time</th>
+										</tr>
+									</thead>
+									<tbody>
+										{% for i in range(length) %}
+										<tr>
+											<td>{{comment[0][i]}}</td>
+											<td>{{comment[1][i]}}</td>
+											<td>{{comment[2][i]}}</td>
+										</tr>
+										{% endfor %}
+									</tbody>
+								</table>
+							</div>
+							<br><br>
+							<ul class="actions">
+								<div class="field">
+									<p>暱稱: <textarea name="Message Name" id="Message Name" rows="1" cols="50"></textarea></p>
+								</div>
+							</ul>
+							<ul class="actions">
+								<div class="field">
+									<textarea name="Message Board" id="Message Board" rows="8" cols="200"></textarea>
+								</div>
+							</ul>
+							<ul class="actions">
+								<li><input type="submit" value="Send Message" class="primary" /></li>
+								<li><input type="reset" value="Clear" /></li>
+							</ul>
+						</div>
+					</div>
+				</form>
+			</div>
+		</section>
+		<!-- Contact -->
+		<section id="contact">
+			<div class="inner">
+				<section>
+					<form method="post" action="/comment?title={{info['title']}}&locationName={{info['locationName']}}&id={{info['id']}}&time={{info['time']}}">
+						<div class="fields">
+							<div class="field half">
+								<label for="name">Name</label>
+								<input type="text" name="name" id="name" />
+							</div>
+							<div class="field half">
+								<label for="email">Email</label>
+								<input type="text" name="email" id="email" />
+							</div>
+							<div class="field">
+								<label for="message">Message</label>
+								<textarea name="message" id="message" rows="6"></textarea>
+							</div>
+						</div>
+						<ul class="actions">
+							<li><input type="submit" value="Send Message" class="primary" /></li>
+							<li><input type="reset" value="Clear" /></li>
+						</ul>
+					</form>
+				</section>
+				<section class="split">
+					<section>
+						<div class="contact-method">
+							<span class="icon solid alt fa-envelope"></span>
+							<h3>Email</h3>
+							<a href="#">B0928001@cgu.edu.tw</a>
+						</div>
+					</section>
+					<section>
+						<div class="contact-method">
+							<span class="icon solid alt fa-phone"></span>
+							<h3>Phone</h3>
+							<span>(886) 0901-1200-57</span>
+						</div>
+					</section>
+					<section>
+						<div class="contact-method">
+							<span class="icon solid alt fa-home"></span>
+							<h3>Address</h3>
+							<span>259 Wen-Hwa 1st Road<br />
+							Kwei-Shan Tao-Yuan<br />
+							Taiwan, 333, R.O.C.</span>
+						</div>
+					</section>
+				</section>
+			</div>
+		</section>
+		<!-- Footer -->
+		<footer id="footer">
+			<div class="inner">
+				<ul class="icons">
+					<li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
+					<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
+					<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
+					<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+				</ul>
+			</div>
+		</footer>
+	</div>
+	<!-- Scripts -->
+	<script src="{{url_for('static', filename='assets/js/jquery.min.js')}}"></script>
+	<script src="{{url_for('static', filename='assets/js/jquery.scrolly.min.js')}}"></script>
+	<script src="{{url_for('static', filename='assets/js/jquery.scrollex.min.js')}}"></script>
+	<script src="{{url_for('static', filename='assets/js/browser.min.js')}}"></script>
+	<script src="{{url_for('static', filename='assets/js/breakpoints.min.js')}}"></script>
+	<script src="{{url_for('static', filename='assets/js/util.js')}}"></script>
+	<script src="{{url_for('static', filename='assets/js/main.js')}}"></script>
+</body>
+</html>
